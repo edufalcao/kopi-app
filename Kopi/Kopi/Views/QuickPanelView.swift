@@ -135,11 +135,19 @@ struct QuickPanelView: View {
             return .handled
         }
         .onKeyPress(.delete) {
-            if let index = selectedIndex, index < filteredItems.count {
-                try? store.delete(filteredItems[index])
-                selectedIndex = nil
-            }
+            deleteSelectedItem()
             return .handled
+        }
+        .onKeyPress(.deleteForward) {
+            deleteSelectedItem()
+            return .handled
+        }
+    }
+
+    private func deleteSelectedItem() {
+        if let index = selectedIndex, index < filteredItems.count {
+            try? store.delete(filteredItems[index])
+            selectedIndex = nil
         }
     }
 
