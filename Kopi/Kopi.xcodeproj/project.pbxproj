@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A0EEC8282F7C1B4C009D17E5 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = A0EEC8272F7C1B4C009D17E5 /* KeyboardShortcuts */; };
+		A0EEC8292F7C1B61009D17E5 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = A0EEC82A2F7C1B61009D17E5 /* LaunchAtLogin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0EEC8282F7C1B4C009D17E5 /* KeyboardShortcuts in Frameworks */,
+				A0EEC8292F7C1B61009D17E5 /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +120,7 @@
 			name = Kopi;
 			packageProductDependencies = (
 				A0EEC8272F7C1B4C009D17E5 /* KeyboardShortcuts */,
+				A0EEC82A2F7C1B61009D17E5 /* LaunchAtLogin */,
 			);
 			productName = Kopi;
 			productReference = A0EEC7FB2F7C17EE009D17E5 /* Kopi.app */;
@@ -277,14 +280,6 @@
 			targetProxy = A0EEC8132F7C17EF009D17E5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A0EEC8272F7C1B4C009D17E5 /* KeyboardShortcuts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A0EEC8252F7C1B4C009D17E5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
-			productName = KeyboardShortcuts;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A0EEC81A2F7C17EF009D17E5 /* Debug */ = {
@@ -606,6 +601,19 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A0EEC8272F7C1B4C009D17E5 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A0EEC8252F7C1B4C009D17E5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+		A0EEC82A2F7C1B61009D17E5 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A0EEC8262F7C1B61009D17E5 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A0EEC7F32F7C17EE009D17E5 /* Project object */;
 }
