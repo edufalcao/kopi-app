@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A0EEC8282F7C1B4C009D17E5 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = A0EEC8272F7C1B4C009D17E5 /* KeyboardShortcuts */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A0EEC8092F7C17EF009D17E5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0EEC8282F7C1B4C009D17E5 /* KeyboardShortcuts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = Kopi;
 			packageProductDependencies = (
+				A0EEC8272F7C1B4C009D17E5 /* KeyboardShortcuts */,
 			);
 			productName = Kopi;
 			productReference = A0EEC7FB2F7C17EE009D17E5 /* Kopi.app */;
@@ -271,6 +277,14 @@
 			targetProxy = A0EEC8132F7C17EF009D17E5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A0EEC8272F7C1B4C009D17E5 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A0EEC8252F7C1B4C009D17E5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A0EEC81A2F7C17EF009D17E5 /* Debug */ = {
