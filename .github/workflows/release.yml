@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: macos-15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install create-dmg
+        run: brew install create-dmg
+
+      - name: Build Release
+        run: |
+          xcodebuild \
+            -project Kopi/Kopi.xcodeproj \
+            -scheme Kopi \
+            -configuration Release \
+            -destination 'platform=macOS' \
+            -derivedDataPath build/DerivedData \
+            build
+
+      - name: Create DMG
+        run: |
+          APP_PATH="build/DerivedData/Build/Products/Release/Kopi.app"
+          create-dmg \
+            --volname "Kopi" \
+            --window-size 600 400 \
+            --icon "Kopi.app" 150 190 \
+            --app-drop-link 450 190 \
+            "Kopi-${GITHUB_REF_NAME}.dmg" \
+            "$APP_PATH"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: Kopi-*.dmg
+          generate_release_notes: true

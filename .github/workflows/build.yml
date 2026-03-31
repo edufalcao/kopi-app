@@ -1,0 +1,32 @@
+name: Build & Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: |
+          xcodebuild \
+            -project Kopi/Kopi.xcodeproj \
+            -scheme Kopi \
+            -configuration Debug \
+            -destination 'platform=macOS' \
+            build
+
+      - name: Test
+        run: |
+          xcodebuild \
+            -project Kopi/Kopi.xcodeproj \
+            -scheme Kopi \
+            -configuration Debug \
+            -destination 'platform=macOS' \
+            -only-testing KopiTests \
+            test
