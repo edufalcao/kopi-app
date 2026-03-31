@@ -1,10 +1,7 @@
 import Foundation
 
-/// Bridges key events from FloatingPanel (AppKit) to QuickPanelView (SwiftUI).
-/// The panel sets action closures; the SwiftUI view provides implementations.
-@MainActor
-@Observable
-final class PanelActionHandler {
-    var onDelete: (() -> Void)?
-    var onPaste: (() -> Void)?
+/// Notification names for bridging NSPanel key events to SwiftUI views.
+extension Notification.Name {
+    static let panelDeleteItem = Notification.Name("panelDeleteItem")
+    static let panelPasteItem = Notification.Name("panelPasteItem")
 }

@@ -7,6 +7,7 @@ final class StatusItemManager: NSObject {
     private var statusItem: NSStatusItem?
     private var panel: FloatingPanel?
     private let modelContainer: ModelContainer
+    private var eventMonitor: Any?
 
     var onOpenHistory: (() -> Void)?
     var onOpenSettings: (() -> Void)?
@@ -33,22 +34,40 @@ final class StatusItemManager: NSObject {
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
 
-        let actionHandler = PanelActionHandler()
         let panelContent = NSHostingView(
-            rootView: QuickPanelView(store: store, pasteService: pasteService, actionHandler: actionHandler)
+            rootView: QuickPanelView(store: store, pasteService: pasteService)
                 .modelContainer(modelContainer)
         )
-        let floatingPanel = FloatingPanel(contentView: panelContent)
+        panel = FloatingPanel(contentView: panelContent)
 
-        // Wire panel key events → action handler → SwiftUI view
-        floatingPanel.onDeleteKey = { [weak actionHandler] in
-            actionHandler?.onDelete?()
-        }
-        floatingPanel.onReturnKey = { [weak actionHandler] in
-            actionHandler?.onPaste?()
-        }
+        // Monitor key events when our panel is key window
+        setupKeyEventMonitor()
+    }
 
-        panel = floatingPanel
+    private func setupKeyEventMonitor() {
+        eventMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
+            guard let self,
+                  let panel = self.panel,
+                  panel.isKeyWindow else {
+                return event
+            }
+
+            // Don't intercept if a text field is being edited
+            if let responder = panel.firstResponder, responder is NSTextView {
+                return event
+            }
+
+            switch event.keyCode {
+            case 51: // Backspace
+                NotificationCenter.default.post(name: .panelDeleteItem, object: nil)
+                return nil // consume the event
+            case 36: // Return
+                NotificationCenter.default.post(name: .panelPasteItem, object: nil)
+                return nil
+            default:
+                return event
+            }
+        }
     }
 
     @objc private func statusItemClicked() {
@@ -94,12 +113,11 @@ final class StatusItemManager: NSObject {
         for item in menu.items {
             item.target = self
         }
-        // Fix: Quit should target NSApp
         menu.items.last?.target = NSApp
 
         statusItem?.menu = menu
         statusItem?.button?.performClick(nil)
-        statusItem?.menu = nil // Reset so left-click works next time
+        statusItem?.menu = nil
     }
 
     @objc private func openHistory() {

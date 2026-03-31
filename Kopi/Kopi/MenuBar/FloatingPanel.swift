@@ -2,9 +2,6 @@ import AppKit
 import SwiftUI
 
 final class FloatingPanel: NSPanel {
-    var onDeleteKey: (() -> Void)?
-    var onReturnKey: (() -> Void)?
-
     init(contentView: NSView) {
         super.init(
             contentRect: NSRect(x: 0, y: 0, width: 340, height: 480),
@@ -32,28 +29,6 @@ final class FloatingPanel: NSPanel {
     override func resignKey() {
         super.resignKey()
         close()
-    }
-
-    override func keyDown(with event: NSEvent) {
-        // If a text field is being edited, let it handle the event
-        if let responder = firstResponder, responder is NSTextView {
-            // But intercept Return even in text field (to paste selected item)
-            if event.keyCode == 36 {
-                onReturnKey?()
-                return
-            }
-            super.keyDown(with: event)
-            return
-        }
-
-        switch event.keyCode {
-        case 51: // Backspace
-            onDeleteKey?()
-        case 36: // Return
-            onReturnKey?()
-        default:
-            super.keyDown(with: event)
-        }
     }
 
     func show(relativeTo button: NSStatusBarButton) {
