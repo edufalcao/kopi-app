@@ -1,4 +1,5 @@
 import AppKit
+import SwiftUI
 import SwiftData
 
 @MainActor
@@ -7,10 +8,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var clipboardMonitor: ClipboardMonitor?
     private var hotkeyManager: HotkeyManager?
     private var store: ClipboardStore?
+    private var historyWindow: NSWindow?
 
     var modelContainer: ModelContainer?
-    var onOpenHistory: (() -> Void)?
-    var onOpenSettings: (() -> Void)?
     private var hasFinishedFirstActivation = false
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -38,26 +38,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // Menu bar
         let statusManager = StatusItemManager(modelContainer: container)
         statusManager.setup(store: store, pasteService: pasteService)
-        statusManager.onOpenHistory = {
-            NSApp.activate(ignoringOtherApps: true)
-            // Find the history window by title or SwiftUI window ID
-            if let window = NSApp.windows.first(where: {
-                $0.title == "Clipboard History" ||
-                $0.identifier?.rawValue.contains("history") == true
-            }) {
-                window.makeKeyAndOrderFront(nil)
-            }
+        statusManager.onOpenHistory = { [weak self] in
+            self?.showHistoryWindow()
         }
-        statusManager.onOpenSettings = {
-            NSApp.activate(ignoringOtherApps: true)
-            // Find the Settings window (orderOut'd on first launch) and show it
-            if let settingsWindow = NSApp.windows.first(where: {
-                $0.frameAutosaveName.contains("Settings") ||
-                $0.title.contains("Settings") ||
-                String(describing: type(of: $0)).contains("Settings")
-            }) {
-                settingsWindow.makeKeyAndOrderFront(nil)
-            }
+        statusManager.onOpenSettings = { [weak self] in
+            self?.showSettingsWindow()
         }
         statusItemManager = statusManager
 
@@ -90,6 +75,48 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ notification: Notification) {
         clipboardMonitor?.stop()
+    }
+
+    private func showHistoryWindow() {
+        NSApp.activate(ignoringOtherApps: true)
+
+        if let window = historyWindow {
+            window.makeKeyAndOrderFront(nil)
+            return
+        }
+
+        guard let container = modelContainer else { return }
+        let hostingView = NSHostingView(
+            rootView: HistoryView()
+                .modelContainer(container)
+        )
+
+        let window = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 700, height: 500),
+            styleMask: [.titled, .closable, .resizable, .miniaturizable],
+            backing: .buffered,
+            defer: false
+        )
+        window.title = "Clipboard History"
+        window.contentView = hostingView
+        window.center()
+        window.isReleasedWhenClosed = false
+        window.makeKeyAndOrderFront(nil)
+        historyWindow = window
+    }
+
+    private func showSettingsWindow() {
+        NSApp.activate(ignoringOtherApps: true)
+        // Find the SwiftUI Settings window and show it
+        for window in NSApp.windows {
+            let typeName = String(describing: type(of: window))
+            if typeName.contains("AppKitBackend.SettingsWindow") ||
+               window.frameAutosaveName.contains("Settings") ||
+               window.title.contains("Settings") {
+                window.makeKeyAndOrderFront(nil)
+                return
+            }
+        }
     }
 
     private func checkAccessibilityPermission() {

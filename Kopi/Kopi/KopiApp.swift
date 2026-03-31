@@ -4,7 +4,6 @@ import SwiftData
 @main
 struct KopiApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @Environment(\.openWindow) private var openWindow
 
     let modelContainer: ModelContainer
 
@@ -25,11 +24,5 @@ struct KopiApp: App {
             SettingsView()
                 .modelContainer(modelContainer)
         }
-
-        Window("Clipboard History", id: "history") {
-            HistoryView()
-                .modelContainer(modelContainer)
-        }
-        .defaultSize(width: 700, height: 500)
     }
 }
