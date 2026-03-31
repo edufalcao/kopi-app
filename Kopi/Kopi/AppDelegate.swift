@@ -11,6 +11,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     var modelContainer: ModelContainer?
     var onOpenHistory: (() -> Void)?
     var onOpenSettings: (() -> Void)?
+    private var hasFinishedFirstActivation = false
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         guard let container = modelContainer else {
@@ -63,6 +64,21 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Check accessibility permission (needed for CGEvent paste simulation)
         checkAccessibilityPermission()
+    }
+
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        false
+    }
+
+    func applicationDidBecomeActive(_ notification: Notification) {
+        // Close any windows that SwiftUI auto-opened on launch
+        // (Settings window opens by default when there's no WindowGroup)
+        if !hasFinishedFirstActivation {
+            hasFinishedFirstActivation = true
+            for window in NSApp.windows where window.title == "Kopi Settings" || window.title == "Settings" {
+                window.close()
+            }
+        }
     }
 
     func applicationWillTerminate(_ notification: Notification) {
