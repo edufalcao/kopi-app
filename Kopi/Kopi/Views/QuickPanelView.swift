@@ -86,6 +86,7 @@ struct QuickPanelView: View {
                         LazyVStack(spacing: 2) {
                             ForEach(Array(filteredItems.enumerated()), id: \.element.id) { index, item in
                                 Button {
+                                    selectedIndex = index
                                     pasteService.paste(item)
                                     try? store.updateLastUsed(item)
                                 } label: {
