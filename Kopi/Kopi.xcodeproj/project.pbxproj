@@ -1,0 +1,635 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		A0EEC8092F7C17EF009D17E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0EEC7F32F7C17EE009D17E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0EEC7FA2F7C17EE009D17E5;
+			remoteInfo = Kopi;
+		};
+		A0EEC8132F7C17EF009D17E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0EEC7F32F7C17EE009D17E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0EEC7FA2F7C17EE009D17E5;
+			remoteInfo = Kopi;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A0EEC7FB2F7C17EE009D17E5 /* Kopi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kopi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0EEC8082F7C17EF009D17E5 /* KopiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KopiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0EEC8122F7C17EF009D17E5 /* KopiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KopiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A0EEC7FD2F7C17EE009D17E5 /* Kopi */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Kopi;
+			sourceTree = "<group>";
+		};
+		A0EEC80B2F7C17EF009D17E5 /* KopiTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = KopiTests;
+			sourceTree = "<group>";
+		};
+		A0EEC8152F7C17EF009D17E5 /* KopiUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = KopiUITests;
+			sourceTree = "<group>";
+		};
+		A0EEC82B2F7C1B9F009D17E5 /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A0EEC82C2F7C1BA6009D17E5 /* Services */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A0EEC7F82F7C17EE009D17E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0EEC8052F7C17EF009D17E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0EEC80F2F7C17EF009D17E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A0EEC7F22F7C17EE009D17E5 = {
+			isa = PBXGroup;
+			children = (
+				A0EEC82F2F7C1BBC009D17E5 /* Utilities */,
+				A0EEC82E2F7C1BB5009D17E5 /* Views */,
+				A0EEC82D2F7C1BAD009D17E5 /* MenuBar */,
+				A0EEC82B2F7C1B9F009D17E5 /* Models */,
+				A0EEC82C2F7C1BA6009D17E5 /* Services */,
+				A0EEC7FD2F7C17EE009D17E5 /* Kopi */,
+				A0EEC80B2F7C17EF009D17E5 /* KopiTests */,
+				A0EEC8152F7C17EF009D17E5 /* KopiUITests */,
+				A0EEC7FC2F7C17EE009D17E5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A0EEC7FC2F7C17EE009D17E5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A0EEC7FB2F7C17EE009D17E5 /* Kopi.app */,
+				A0EEC8082F7C17EF009D17E5 /* KopiTests.xctest */,
+				A0EEC8122F7C17EF009D17E5 /* KopiUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A0EEC82D2F7C1BAD009D17E5 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		A0EEC82E2F7C1BB5009D17E5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A0EEC82F2F7C1BBC009D17E5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A0EEC7FA2F7C17EE009D17E5 /* Kopi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0EEC81C2F7C17EF009D17E5 /* Build configuration list for PBXNativeTarget "Kopi" */;
+			buildPhases = (
+				A0EEC7F72F7C17EE009D17E5 /* Sources */,
+				A0EEC7F82F7C17EE009D17E5 /* Frameworks */,
+				A0EEC7F92F7C17EE009D17E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A0EEC7FD2F7C17EE009D17E5 /* Kopi */,
+				A0EEC82B2F7C1B9F009D17E5 /* Models */,
+				A0EEC82C2F7C1BA6009D17E5 /* Services */,
+			);
+			name = Kopi;
+			packageProductDependencies = (
+			);
+			productName = Kopi;
+			productReference = A0EEC7FB2F7C17EE009D17E5 /* Kopi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A0EEC8072F7C17EF009D17E5 /* KopiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0EEC81F2F7C17EF009D17E5 /* Build configuration list for PBXNativeTarget "KopiTests" */;
+			buildPhases = (
+				A0EEC8042F7C17EF009D17E5 /* Sources */,
+				A0EEC8052F7C17EF009D17E5 /* Frameworks */,
+				A0EEC8062F7C17EF009D17E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0EEC80A2F7C17EF009D17E5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A0EEC80B2F7C17EF009D17E5 /* KopiTests */,
+			);
+			name = KopiTests;
+			packageProductDependencies = (
+			);
+			productName = KopiTests;
+			productReference = A0EEC8082F7C17EF009D17E5 /* KopiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A0EEC8112F7C17EF009D17E5 /* KopiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0EEC8222F7C17EF009D17E5 /* Build configuration list for PBXNativeTarget "KopiUITests" */;
+			buildPhases = (
+				A0EEC80E2F7C17EF009D17E5 /* Sources */,
+				A0EEC80F2F7C17EF009D17E5 /* Frameworks */,
+				A0EEC8102F7C17EF009D17E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0EEC8142F7C17EF009D17E5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A0EEC8152F7C17EF009D17E5 /* KopiUITests */,
+			);
+			name = KopiUITests;
+			packageProductDependencies = (
+			);
+			productName = KopiUITests;
+			productReference = A0EEC8122F7C17EF009D17E5 /* KopiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A0EEC7F32F7C17EE009D17E5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2640;
+				LastUpgradeCheck = 2640;
+				TargetAttributes = {
+					A0EEC7FA2F7C17EE009D17E5 = {
+						CreatedOnToolsVersion = 26.4;
+					};
+					A0EEC8072F7C17EF009D17E5 = {
+						CreatedOnToolsVersion = 26.4;
+						TestTargetID = A0EEC7FA2F7C17EE009D17E5;
+					};
+					A0EEC8112F7C17EF009D17E5 = {
+						CreatedOnToolsVersion = 26.4;
+						TestTargetID = A0EEC7FA2F7C17EE009D17E5;
+					};
+				};
+			};
+			buildConfigurationList = A0EEC7F62F7C17EE009D17E5 /* Build configuration list for PBXProject "Kopi" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A0EEC7F22F7C17EE009D17E5;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A0EEC8252F7C1B4C009D17E5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				A0EEC8262F7C1B61009D17E5 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A0EEC7FC2F7C17EE009D17E5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A0EEC7FA2F7C17EE009D17E5 /* Kopi */,
+				A0EEC8072F7C17EF009D17E5 /* KopiTests */,
+				A0EEC8112F7C17EF009D17E5 /* KopiUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A0EEC7F92F7C17EE009D17E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0EEC8062F7C17EF009D17E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0EEC8102F7C17EF009D17E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A0EEC7F72F7C17EE009D17E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0EEC8042F7C17EF009D17E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0EEC80E2F7C17EF009D17E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A0EEC80A2F7C17EF009D17E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0EEC7FA2F7C17EE009D17E5 /* Kopi */;
+			targetProxy = A0EEC8092F7C17EF009D17E5 /* PBXContainerItemProxy */;
+		};
+		A0EEC8142F7C17EF009D17E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0EEC7FA2F7C17EE009D17E5 /* Kopi */;
+			targetProxy = A0EEC8132F7C17EF009D17E5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A0EEC81A2F7C17EF009D17E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A0EEC81B2F7C17EF009D17E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		A0EEC81D2F7C17EF009D17E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kopi.Kopi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A0EEC81E2F7C17EF009D17E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kopi.Kopi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A0EEC8202F7C17EF009D17E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kopi.KopiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kopi.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Kopi";
+			};
+			name = Debug;
+		};
+		A0EEC8212F7C17EF009D17E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kopi.KopiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kopi.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Kopi";
+			};
+			name = Release;
+		};
+		A0EEC8232F7C17EF009D17E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kopi.KopiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Kopi;
+			};
+			name = Debug;
+		};
+		A0EEC8242F7C17EF009D17E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kopi.KopiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Kopi;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A0EEC7F62F7C17EE009D17E5 /* Build configuration list for PBXProject "Kopi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0EEC81A2F7C17EF009D17E5 /* Debug */,
+				A0EEC81B2F7C17EF009D17E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0EEC81C2F7C17EF009D17E5 /* Build configuration list for PBXNativeTarget "Kopi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0EEC81D2F7C17EF009D17E5 /* Debug */,
+				A0EEC81E2F7C17EF009D17E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0EEC81F2F7C17EF009D17E5 /* Build configuration list for PBXNativeTarget "KopiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0EEC8202F7C17EF009D17E5 /* Debug */,
+				A0EEC8212F7C17EF009D17E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0EEC8222F7C17EF009D17E5 /* Build configuration list for PBXNativeTarget "KopiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0EEC8232F7C17EF009D17E5 /* Debug */,
+				A0EEC8242F7C17EF009D17E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A0EEC8252F7C1B4C009D17E5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
+		A0EEC8262F7C1B61009D17E5 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+	};
+	rootObject = A0EEC7F32F7C17EE009D17E5 /* Project object */;
+}
