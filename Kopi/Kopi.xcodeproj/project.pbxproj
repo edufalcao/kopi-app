@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		7EF742B9AA5AB679955A0343 /* ClipboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50B452B8A8477E7E094A24F /* ClipboardItem.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		A0EEC8092F7C17EF009D17E5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -31,15 +27,24 @@
 		A0EEC7FB2F7C17EE009D17E5 /* Kopi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kopi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EEC8082F7C17EF009D17E5 /* KopiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KopiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EEC8122F7C17EF009D17E5 /* KopiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KopiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E50B452B8A8477E7E094A24F /* ClipboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClipboardItem.swift; path = Kopi/Models/ClipboardItem.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A0EEC7FD2F7C17EE009D17E5 /* Kopi */ = {isa = PBXFileSystemSynchronizedRootGroup; path = Kopi; sourceTree = "<group>"; };
-		A0EEC80B2F7C17EF009D17E5 /* KopiTests */ = {isa = PBXFileSystemSynchronizedRootGroup; path = KopiTests; sourceTree = "<group>"; };
-		A0EEC8152F7C17EF009D17E5 /* KopiUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; path = KopiUITests; sourceTree = "<group>"; };
-		A0EEC82B2F7C1B9F009D17E5 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; path = Models; sourceTree = "<group>"; };
-		A0EEC82C2F7C1BA6009D17E5 /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; path = Services; sourceTree = "<group>"; };
+		A0EEC7FD2F7C17EE009D17E5 /* Kopi */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Kopi;
+			sourceTree = "<group>";
+		};
+		A0EEC80B2F7C17EF009D17E5 /* KopiTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = KopiTests;
+			sourceTree = "<group>";
+		};
+		A0EEC8152F7C17EF009D17E5 /* KopiUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = KopiUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,13 +78,7 @@
 				A0EEC7FD2F7C17EE009D17E5 /* Kopi */,
 				A0EEC80B2F7C17EF009D17E5 /* KopiTests */,
 				A0EEC8152F7C17EF009D17E5 /* KopiUITests */,
-				A0EEC82D2F7C1BAD009D17E5 /* MenuBar */,
-				A0EEC82B2F7C1B9F009D17E5 /* Models */,
 				A0EEC7FC2F7C17EE009D17E5 /* Products */,
-				A0EEC82C2F7C1BA6009D17E5 /* Services */,
-				A0EEC82F2F7C1BBC009D17E5 /* Utilities */,
-				A0EEC82E2F7C1BB5009D17E5 /* Views */,
-				E50B452B8A8477E7E094A24F /* ClipboardItem.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,27 +90,6 @@
 				A0EEC8122F7C17EF009D17E5 /* KopiUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		A0EEC82D2F7C1BAD009D17E5 /* MenuBar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MenuBar;
-			sourceTree = "<group>";
-		};
-		A0EEC82E2F7C1BB5009D17E5 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		A0EEC82F2F7C1BBC009D17E5 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,8 +109,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				A0EEC7FD2F7C17EE009D17E5 /* Kopi */,
-				A0EEC82B2F7C1B9F009D17E5 /* Models */,
-				A0EEC82C2F7C1BA6009D17E5 /* Services */,
 			);
 			name = Kopi;
 			packageProductDependencies = (
@@ -264,7 +240,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EF742B9AA5AB679955A0343 /* ClipboardItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

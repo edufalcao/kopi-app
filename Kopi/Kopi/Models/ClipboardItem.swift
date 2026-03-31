@@ -1,14 +1,14 @@
 import Foundation
 import SwiftData
 
-enum ContentType: String, Codable {
+enum ContentType: String, Codable, Sendable {
     case text
     case image
 }
 
 @Model
 final class ClipboardItem {
-    var id: UUID
+    @Attribute(.unique) var id: UUID
     var contentType: ContentType
     var textContent: String?
     var imageData: Data?
