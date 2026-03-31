@@ -6,12 +6,33 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct KopiApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
+    let modelContainer: ModelContainer
+
+    init() {
+        do {
+            let schema = Schema([ClipboardItem.self])
+            let config = ModelConfiguration(
+                "KopiStore",
+                schema: schema
+            )
+            modelContainer = try ModelContainer(
+                for: schema,
+                configurations: [config]
+            )
+        } catch {
+            fatalError("Failed to create ModelContainer: \(error)")
         }
+    }
+
+    var body: some Scene {
+        Settings {
+            Text("Kopi Settings")
+                .frame(width: 300, height: 200)
+        }
+        .modelContainer(modelContainer)
     }
 }
