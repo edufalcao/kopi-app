@@ -129,6 +129,7 @@ struct QuickPanelView: View {
                 }
                 .focusable()
                 .focused($isListFocused)
+                .focusEffectDisabled()
                 .onKeyPress(.upArrow) {
                     moveSelection(by: -1)
                     return .handled

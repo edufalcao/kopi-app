@@ -39,14 +39,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let statusManager = StatusItemManager(modelContainer: container)
         statusManager.setup(store: store, pasteService: pasteService)
         statusManager.onOpenHistory = {
-            // Activate app and open/focus the history window
             NSApp.activate(ignoringOtherApps: true)
-            if let window = NSApp.windows.first(where: { $0.identifier?.rawValue == "history" }) {
+            // Find the history window by title or SwiftUI window ID
+            if let window = NSApp.windows.first(where: {
+                $0.title == "Clipboard History" ||
+                $0.identifier?.rawValue.contains("history") == true
+            }) {
                 window.makeKeyAndOrderFront(nil)
-            } else {
-                // The SwiftUI Window scene should create it automatically
-                // Force the app to activate so SwiftUI processes the scene
-                NSApp.activate(ignoringOtherApps: true)
             }
         }
         statusManager.onOpenSettings = {
