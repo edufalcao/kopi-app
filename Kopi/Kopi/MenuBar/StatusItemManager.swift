@@ -48,7 +48,7 @@ final class StatusItemManager: NSObject {
         eventMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
             guard let self,
                   let panel = self.panel,
-                  panel.isKeyWindow else {
+                  panel.isVisible else {
                 return event
             }
 

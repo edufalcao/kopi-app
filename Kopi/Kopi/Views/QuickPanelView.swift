@@ -12,6 +12,7 @@ struct QuickPanelView: View {
     @State private var searchText = ""
     @State private var selectedFilter: ClipboardFilter = .all
     @State private var selectedIndex: Int?
+    @FocusState private var isListFocused: Bool
 
     private var filteredItems: [ClipboardItem] {
         var items = allItems
@@ -67,7 +68,7 @@ struct QuickPanelView: View {
 
             Divider()
 
-            // Items list
+            // Items list (ScrollView + Buttons instead of List for reliable clicks)
             if filteredItems.isEmpty {
                 Spacer()
                 VStack(spacing: 8) {
@@ -80,22 +81,70 @@ struct QuickPanelView: View {
                 }
                 Spacer()
             } else {
-                List(Array(filteredItems.enumerated()), id: \.element.id) { index, item in
-                    ClipboardItemRow(item: item, imageStorage: imageStorage)
-                        .id(item.id)
-                        .listRowInsets(EdgeInsets(top: 1, leading: 6, bottom: 1, trailing: 6))
-                        .listRowBackground(
-                            selectedIndex == index
-                                ? Color.accentColor.opacity(0.2)
-                                : Color.clear
-                        )
-                        .onTapGesture {
-                            pasteService.paste(item)
-                            try? store.updateLastUsed(item)
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        LazyVStack(spacing: 2) {
+                            ForEach(Array(filteredItems.enumerated()), id: \.element.id) { index, item in
+                                Button {
+                                    pasteService.paste(item)
+                                    try? store.updateLastUsed(item)
+                                } label: {
+                                    ClipboardItemRow(item: item, imageStorage: imageStorage)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                                .buttonStyle(.plain)
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 1)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .fill(selectedIndex == index
+                                              ? Color.accentColor.opacity(0.2)
+                                              : Color.clear)
+                                )
+                                .id(item.id)
+                                .contextMenu {
+                                    Button("Paste") {
+                                        pasteService.paste(item)
+                                        try? store.updateLastUsed(item)
+                                    }
+                                    Button(item.isPinned ? "Unpin" : "Pin") {
+                                        try? store.togglePin(item)
+                                    }
+                                    Divider()
+                                    Button("Delete", role: .destructive) {
+                                        try? store.delete(item)
+                                    }
+                                }
+                            }
                         }
+                        .padding(.vertical, 4)
+                    }
+                    .onChange(of: selectedIndex) { _, newIndex in
+                        if let idx = newIndex, idx < filteredItems.count {
+                            withAnimation {
+                                proxy.scrollTo(filteredItems[idx].id, anchor: .center)
+                            }
+                        }
+                    }
                 }
-                .listStyle(.plain)
-                .scrollContentBackground(.hidden)
+                .focusable()
+                .focused($isListFocused)
+                .onKeyPress(.upArrow) {
+                    moveSelection(by: -1)
+                    return .handled
+                }
+                .onKeyPress(.downArrow) {
+                    moveSelection(by: 1)
+                    return .handled
+                }
+                .onKeyPress(.return) {
+                    pasteSelectedItem()
+                    return .handled
+                }
+                .onKeyPress(.delete) {
+                    deleteSelectedItem()
+                    return .handled
+                }
             }
 
             Divider()
@@ -116,22 +165,15 @@ struct QuickPanelView: View {
         .frame(width: 340, height: 480)
         .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 12))
-        // Arrow keys handled via .onKeyPress (work when List isn't focused)
-        .onKeyPress(.upArrow) {
-            moveSelection(by: -1)
-            return .handled
-        }
-        .onKeyPress(.downArrow) {
-            moveSelection(by: 1)
-            return .handled
-        }
-        // Delete and Paste handled via NSEvent monitor → NotificationCenter
-        // (because .onKeyPress doesn't fire when List/TextField has focus)
+        // Also listen for notifications from the NSEvent monitor (backup path)
         .onReceive(NotificationCenter.default.publisher(for: .panelDeleteItem)) { _ in
             deleteSelectedItem()
         }
         .onReceive(NotificationCenter.default.publisher(for: .panelPasteItem)) { _ in
             pasteSelectedItem()
+        }
+        .onAppear {
+            isListFocused = true
         }
     }
 
