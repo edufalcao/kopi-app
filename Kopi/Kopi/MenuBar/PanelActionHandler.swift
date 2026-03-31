@@ -4,4 +4,5 @@ import Foundation
 extension Notification.Name {
     static let panelDeleteItem = Notification.Name("panelDeleteItem")
     static let panelPasteItem = Notification.Name("panelPasteItem")
+    static let panelDidShow = Notification.Name("panelDidShow")
 }

@@ -43,6 +43,7 @@ final class FloatingPanel: NSPanel {
 
         setFrameOrigin(NSPoint(x: x, y: y))
         makeKeyAndOrderFront(nil)
+        NotificationCenter.default.post(name: .panelDidShow, object: nil)
     }
 
     func toggle(relativeTo button: NSStatusBarButton) {

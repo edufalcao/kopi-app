@@ -176,6 +176,9 @@ struct QuickPanelView: View {
         .onAppear {
             isListFocused = true
         }
+        .onReceive(NotificationCenter.default.publisher(for: .panelDidShow)) { _ in
+            isListFocused = true
+        }
     }
 
     private func deleteSelectedItem() {
