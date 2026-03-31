@@ -71,12 +71,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ notification: Notification) {
-        // Close any windows that SwiftUI auto-opened on launch
+        // Hide any windows that SwiftUI auto-opened on launch
         // (Settings window opens by default when there's no WindowGroup)
+        // Use orderOut instead of close so the window can be reopened later
         if !hasFinishedFirstActivation {
             hasFinishedFirstActivation = true
-            for window in NSApp.windows where window.title == "Kopi Settings" || window.title == "Settings" {
-                window.close()
+            for window in NSApp.windows {
+                window.orderOut(nil)
             }
         }
     }
