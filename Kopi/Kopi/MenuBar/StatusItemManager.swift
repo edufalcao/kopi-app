@@ -33,11 +33,22 @@ final class StatusItemManager: NSObject {
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
 
+        let actionHandler = PanelActionHandler()
         let panelContent = NSHostingView(
-            rootView: QuickPanelView(store: store, pasteService: pasteService)
+            rootView: QuickPanelView(store: store, pasteService: pasteService, actionHandler: actionHandler)
                 .modelContainer(modelContainer)
         )
-        panel = FloatingPanel(contentView: panelContent)
+        let floatingPanel = FloatingPanel(contentView: panelContent)
+
+        // Wire panel key events → action handler → SwiftUI view
+        floatingPanel.onDeleteKey = { [weak actionHandler] in
+            actionHandler?.onDelete?()
+        }
+        floatingPanel.onReturnKey = { [weak actionHandler] in
+            actionHandler?.onPaste?()
+        }
+
+        panel = floatingPanel
     }
 
     @objc private func statusItemClicked() {

@@ -4,6 +4,7 @@ import SwiftData
 struct QuickPanelView: View {
     let store: ClipboardStore
     let pasteService: PasteService
+    let actionHandler: PanelActionHandler
     let imageStorage = ImageStorageService()
 
     @Query(sort: \ClipboardItem.createdAt, order: .reverse)
@@ -118,29 +119,21 @@ struct QuickPanelView: View {
         .frame(width: 340, height: 480)
         .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 12))
-        .onKeyPress(.upArrow) {
-            moveSelection(by: -1)
-            return .handled
-        }
-        .onKeyPress(.downArrow) {
-            moveSelection(by: 1)
-            return .handled
-        }
-        .onKeyPress(.return) {
-            if let index = selectedIndex, index < filteredItems.count {
-                let item = filteredItems[index]
-                pasteService.paste(item)
-                try? store.updateLastUsed(item)
+        .onAppear {
+            actionHandler.onDelete = { [self] in
+                deleteSelectedItem()
             }
-            return .handled
+            actionHandler.onPaste = { [self] in
+                pasteSelectedItem()
+            }
         }
-        .onKeyPress(.delete) {
-            deleteSelectedItem()
-            return .handled
-        }
-        .onKeyPress(.deleteForward) {
-            deleteSelectedItem()
-            return .handled
+    }
+
+    private func pasteSelectedItem() {
+        if let index = selectedIndex, index < filteredItems.count {
+            let item = filteredItems[index]
+            pasteService.paste(item)
+            try? store.updateLastUsed(item)
         }
     }
 
@@ -156,9 +149,15 @@ struct QuickPanelView: View {
         guard count > 0 else { return }
 
         if let current = selectedIndex {
-            selectedIndex = max(0, min(count - 1, current + offset))
+            let newIndex = max(0, min(count - 1, current + offset))
+            selectedIndex = newIndex
         } else {
             selectedIndex = offset > 0 ? 0 : count - 1
         }
+    }
+
+    /// Called from FloatingPanel's keyDown override (arrow keys)
+    func handleArrowKey(direction: Int) {
+        moveSelection(by: direction)
     }
 }

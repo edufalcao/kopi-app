@@ -51,7 +51,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
         statusManager.onOpenSettings = {
             NSApp.activate(ignoringOtherApps: true)
-            NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+            // Find the Settings window (orderOut'd on first launch) and show it
+            if let settingsWindow = NSApp.windows.first(where: {
+                $0.frameAutosaveName.contains("Settings") ||
+                $0.title.contains("Settings") ||
+                String(describing: type(of: $0)).contains("Settings")
+            }) {
+                settingsWindow.makeKeyAndOrderFront(nil)
+            }
         }
         statusItemManager = statusManager
 
