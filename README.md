@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/platform-macOS%2014%2B-blue" alt="macOS 14+">
+  <img src="https://img.shields.io/badge/platform-macOS%2014.6%2B-blue" alt="macOS 14.6+">
   <img src="https://img.shields.io/badge/swift-5.9%2B-orange" alt="Swift 5.9+">
   <img src="https://img.shields.io/badge/license-GPL--3.0-green" alt="GPL-3.0">
 </p>
@@ -58,7 +58,7 @@ Right-click the menu bar icon and select "Settings..." to configure:
 
 ## Requirements
 
-- **macOS 14.0** (Sonoma) or later
+- **macOS 14.6** or later
 - **Accessibility permission** — Required for paste simulation (Cmd+V via CGEvent). The app prompts on first launch.
 
 ## Installation
@@ -145,8 +145,11 @@ xcodebuild test -scheme Kopi -destination 'platform=macOS' -only-testing KopiTes
 ```
 
 The test suite covers:
-- **ImageStorageService** — Blob vs filesystem routing, SHA-256 hashing, file cleanup (6 tests)
 - **ClipboardStore** — CRUD operations, search, filtering, purge logic, pinning (12 tests)
+- **ImageStorageService** — Blob vs filesystem routing, SHA-256 hashing, file cleanup (6 tests)
+- **ClipboardItemSearch** — Shared text and image search/filter behavior for the quick panel and history views (5 tests)
+- **PasteboardChangeTracker** — Exact self-write tracking so external clipboard changes are not skipped after paste (3 tests)
+- **Smoke coverage** — Base app test target wiring (1 test)
 
 ### Project Structure
 

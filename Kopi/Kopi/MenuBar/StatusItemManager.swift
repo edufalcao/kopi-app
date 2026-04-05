@@ -35,7 +35,13 @@ final class StatusItemManager: NSObject {
         }
 
         let panelContent = NSHostingView(
-            rootView: QuickPanelView(store: store, pasteService: pasteService)
+            rootView: QuickPanelView(
+                store: store,
+                pasteService: pasteService,
+                onPasteCompleted: { [weak self] in
+                    self?.panel?.close()
+                }
+            )
                 .modelContainer(modelContainer)
         )
         panel = FloatingPanel(contentView: panelContent)

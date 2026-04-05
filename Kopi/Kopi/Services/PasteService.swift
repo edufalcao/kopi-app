@@ -11,12 +11,12 @@ final class PasteService {
     }
 
     func paste(_ item: ClipboardItem) {
-        monitor.isWritingToPasteboard = true
-        writeToPasteboard(item)
+        let changeCount = writeToPasteboard(item)
+        monitor.markOwnPasteboardWrite(changeCount: changeCount)
         simulateCmdV()
     }
 
-    private func writeToPasteboard(_ item: ClipboardItem) {
+    private func writeToPasteboard(_ item: ClipboardItem) -> Int {
         let pasteboard = NSPasteboard.general
         pasteboard.clearContents()
 
@@ -30,6 +30,8 @@ final class PasteService {
                 pasteboard.setData(data, forType: .tiff)
             }
         }
+
+        return pasteboard.changeCount
     }
 
     private func resolveImageData(_ item: ClipboardItem) -> Data? {

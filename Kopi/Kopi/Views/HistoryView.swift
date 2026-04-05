@@ -13,22 +13,11 @@ struct HistoryView: View {
     private let imageStorage = ImageStorageService()
 
     private var filteredItems: [ClipboardItem] {
-        var items = allItems
-
-        switch selectedFilter {
-        case .all: break
-        case .text: items = items.filter { $0.contentType == .text }
-        case .images: items = items.filter { $0.contentType == .image }
-        case .pinned: items = items.filter { $0.isPinned }
-        }
-
-        if !searchText.isEmpty {
-            items = items.filter {
-                $0.textContent?.localizedCaseInsensitiveContains(searchText) == true
-            }
-        }
-
-        return items
+        ClipboardItemSearch.filter(
+            allItems,
+            selectedFilter: selectedFilter,
+            query: searchText
+        )
     }
 
     private var groupedItems: [(String, [ClipboardItem])] {

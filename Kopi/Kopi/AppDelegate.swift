@@ -107,15 +107,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func showSettingsWindow() {
         NSApp.activate(ignoringOtherApps: true)
-        // Find the SwiftUI Settings window and show it
-        for window in NSApp.windows {
-            let typeName = String(describing: type(of: window))
-            if typeName.contains("AppKitBackend.SettingsWindow") ||
-               window.frameAutosaveName.contains("Settings") ||
-               window.title.contains("Settings") {
-                window.makeKeyAndOrderFront(nil)
-                return
-            }
+
+        if NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil) {
+            return
+        }
+
+        for window in NSApp.windows where window.title.contains("Settings") {
+            window.makeKeyAndOrderFront(nil)
+            return
         }
     }
 

@@ -4,6 +4,7 @@ import SwiftData
 struct QuickPanelView: View {
     let store: ClipboardStore
     let pasteService: PasteService
+    let onPasteCompleted: () -> Void
     let imageStorage = ImageStorageService()
 
     @Query(sort: \ClipboardItem.createdAt, order: .reverse)
@@ -15,26 +16,11 @@ struct QuickPanelView: View {
     @FocusState private var isListFocused: Bool
 
     private var filteredItems: [ClipboardItem] {
-        var items = allItems
-
-        switch selectedFilter {
-        case .all:
-            break
-        case .text:
-            items = items.filter { $0.contentType == .text }
-        case .images:
-            items = items.filter { $0.contentType == .image }
-        case .pinned:
-            items = items.filter { $0.isPinned }
-        }
-
-        if !searchText.isEmpty {
-            items = items.filter {
-                $0.textContent?.localizedCaseInsensitiveContains(searchText) == true
-            }
-        }
-
-        return items
+        ClipboardItemSearch.filter(
+            allItems,
+            selectedFilter: selectedFilter,
+            query: searchText
+        )
     }
 
     var body: some View {
@@ -87,8 +73,7 @@ struct QuickPanelView: View {
                             ForEach(Array(filteredItems.enumerated()), id: \.element.id) { index, item in
                                 Button {
                                     selectedIndex = index
-                                    pasteService.paste(item)
-                                    try? store.updateLastUsed(item)
+                                    paste(item)
                                 } label: {
                                     ClipboardItemRow(item: item, imageStorage: imageStorage)
                                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -105,8 +90,7 @@ struct QuickPanelView: View {
                                 .id(item.id)
                                 .contextMenu {
                                     Button("Paste") {
-                                        pasteService.paste(item)
-                                        try? store.updateLastUsed(item)
+                                        paste(item)
                                     }
                                     Button(item.isPinned ? "Unpin" : "Pin") {
                                         try? store.togglePin(item)
@@ -192,8 +176,7 @@ struct QuickPanelView: View {
     private func pasteSelectedItem() {
         if let index = selectedIndex, index < filteredItems.count {
             let item = filteredItems[index]
-            pasteService.paste(item)
-            try? store.updateLastUsed(item)
+            paste(item)
         }
     }
 
@@ -206,5 +189,11 @@ struct QuickPanelView: View {
         } else {
             selectedIndex = offset > 0 ? 0 : count - 1
         }
+    }
+
+    private func paste(_ item: ClipboardItem) {
+        pasteService.paste(item)
+        try? store.updateLastUsed(item)
+        onPasteCompleted()
     }
 }

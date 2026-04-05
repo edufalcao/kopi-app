@@ -7,7 +7,7 @@ final class ClipboardMonitor {
     private var lastChangeCount: Int
     private let store: ClipboardStore
     private let imageStorage: ImageStorageService
-    var isWritingToPasteboard = false
+    private var changeTracker = PasteboardChangeTracker()
 
     init(store: ClipboardStore, imageStorage: ImageStorageService = ImageStorageService()) {
         self.store = store
@@ -31,18 +31,23 @@ final class ClipboardMonitor {
         timer = nil
     }
 
+    func markOwnPasteboardWrite(changeCount: Int) {
+        changeTracker.markOwnWrite(changeCount: changeCount)
+    }
+
     private func checkForChanges() {
         let pasteboard = NSPasteboard.general
         let currentCount = pasteboard.changeCount
 
         guard currentCount != lastChangeCount else { return }
-        lastChangeCount = currentCount
 
-        // Skip if we wrote to the pasteboard ourselves (paste-from-history)
-        if isWritingToPasteboard {
-            isWritingToPasteboard = false
+        // Skip only the specific change count that we wrote ourselves.
+        if changeTracker.shouldIgnore(changeCount: currentCount) {
+            lastChangeCount = currentCount
             return
         }
+
+        lastChangeCount = currentCount
 
         do {
             try processClipboardContent(pasteboard)
