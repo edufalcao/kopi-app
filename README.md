@@ -55,6 +55,8 @@ Right-click the menu bar icon and select "Settings..." to configure:
 - **General** — Launch at login
 - **Shortcuts** — Customize the global hotkey
 - **Storage** — Set auto-purge duration, clear all history
+- **About** — App version information
+- **Donate** — Support Kopi via Buy Me a Coffee
 
 ## Requirements
 
@@ -105,7 +107,7 @@ KopiApp (SwiftUI App)
 ├── History Window (NSWindow)
 │   └── HistoryView             — SwiftUI NavigationSplitView
 ├── Settings (SwiftUI Settings scene)
-│   └── SettingsView            — Hotkey, purge, launch-at-login
+│   └── SettingsView            — Startup, shortcuts, storage, about, donate
 └── Services
     ├── ClipboardStore           — SwiftData CRUD, search, purge
     └── ImageStorageService      — Hybrid blob/filesystem storage
@@ -140,15 +142,17 @@ KopiApp (SwiftUI App)
 ### Running Tests
 
 ```bash
-cd Kopi
-xcodebuild test -scheme Kopi -destination 'platform=macOS' -only-testing KopiTests
+xcodebuild -project Kopi/Kopi.xcodeproj -scheme Kopi -destination 'platform=macOS' -only-testing KopiTests test
 ```
 
-The test suite covers:
+The test suite currently covers 36 tests across 8 suites:
 - **ClipboardStore** — CRUD operations, search, filtering, purge logic, pinning (12 tests)
 - **ImageStorageService** — Blob vs filesystem routing, SHA-256 hashing, file cleanup (6 tests)
 - **ClipboardItemSearch** — Shared text and image search/filter behavior for the quick panel and history views (5 tests)
 - **PasteboardChangeTracker** — Exact self-write tracking so external clipboard changes are not skipped after paste (3 tests)
+- **InitialActivationWindowHider** — First-launch window hiding rules for explicit history/settings opens (2 tests)
+- **StatusMenuActionDispatcher** — Deferred status-menu actions so first-open windows are not dismissed (1 test)
+- **SettingsScenePresenter** — Native Settings scene routing and fallbacks (6 tests)
 - **Smoke coverage** — Base app test target wiring (1 test)
 
 ### Project Structure
