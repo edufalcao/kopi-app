@@ -7,13 +7,18 @@ final class StatusItemManager: NSObject {
     private var statusItem: NSStatusItem?
     private var panel: FloatingPanel?
     private let modelContainer: ModelContainer
+    private let menuActionDispatcher: StatusMenuActionDispatcher
     private var eventMonitor: Any?
 
     var onOpenHistory: (() -> Void)?
     var onOpenSettings: (() -> Void)?
 
-    init(modelContainer: ModelContainer) {
+    init(
+        modelContainer: ModelContainer,
+        menuActionDispatcher: StatusMenuActionDispatcher = StatusMenuActionDispatcher()
+    ) {
         self.modelContainer = modelContainer
+        self.menuActionDispatcher = menuActionDispatcher
     }
 
     func setup(
@@ -127,10 +132,14 @@ final class StatusItemManager: NSObject {
     }
 
     @objc private func openHistory() {
-        onOpenHistory?()
+        menuActionDispatcher.dispatch { [weak self] in
+            self?.onOpenHistory?()
+        }
     }
 
     @objc private func openSettings() {
-        onOpenSettings?()
+        menuActionDispatcher.dispatch { [weak self] in
+            self?.onOpenSettings?()
+        }
     }
 }

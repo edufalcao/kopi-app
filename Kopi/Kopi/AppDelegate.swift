@@ -9,9 +9,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var hotkeyManager: HotkeyManager?
     private var store: ClipboardStore?
     private var historyWindow: NSWindow?
+    private let settingsScenePresenter = SettingsScenePresenter()
+    private var initialActivationWindowHider = InitialActivationWindowHider()
 
     var modelContainer: ModelContainer?
-    private var hasFinishedFirstActivation = false
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         guard let container = modelContainer else {
@@ -62,11 +63,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ notification: Notification) {
-        // Hide any windows that SwiftUI auto-opened on launch
-        // (Settings window opens by default when there's no WindowGroup)
-        // Use orderOut instead of close so the window can be reopened later
-        if !hasFinishedFirstActivation {
-            hasFinishedFirstActivation = true
+        // Hide any windows that SwiftUI auto-opened on launch.
+        // If the first activation was triggered by an explicit window open,
+        // keep that requested window visible.
+        if initialActivationWindowHider.shouldHideWindowsOnActivation() {
             for window in NSApp.windows {
                 window.orderOut(nil)
             }
@@ -78,6 +78,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func showHistoryWindow() {
+        initialActivationWindowHider.prepareForExplicitWindowPresentation()
         NSApp.activate(ignoringOtherApps: true)
 
         if let window = historyWindow {
@@ -106,16 +107,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func showSettingsWindow() {
+        initialActivationWindowHider.prepareForExplicitWindowPresentation()
         NSApp.activate(ignoringOtherApps: true)
-
-        if NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil) {
-            return
-        }
-
-        for window in NSApp.windows where window.title.contains("Settings") {
-            window.makeKeyAndOrderFront(nil)
-            return
-        }
+        _ = settingsScenePresenter.present()
     }
 
     private func checkAccessibilityPermission() {

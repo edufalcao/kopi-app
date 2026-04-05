@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-04-05
+
+### Fixed
+- `Open History` and `Settings...` from the menu bar now work on the first attempt instead of flashing and disappearing on first activation
+- The menu bar Settings action now reuses the real native macOS Settings scene instead of falling back to a plain window presentation
+- Settings reopening now follows the app menu callback first, then only falls back to selector-based reopening when an actual settings window is present
+
+### Changed
+- Added regression tests for first-activation window hiding, status menu action dispatch timing, and native settings scene presentation
+- Restored the standard macOS Settings toolbar appearance with per-tab icons
+
 ## [1.0.1] - 2026-04-05
 
 ### Fixed
