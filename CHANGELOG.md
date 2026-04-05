@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-04-05
+
+### Added
+- Mouse hover highlighting on quick panel items — rows now highlight on hover, sharing the same selection state as keyboard navigation
+- Website and GitHub repository links in Settings > About tab
+- Icon for the "Open History" item in the menu bar context menu
+
 ## [1.0.1] - 2026-04-05
 
 ### Fixed

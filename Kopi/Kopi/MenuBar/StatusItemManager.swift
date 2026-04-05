@@ -98,13 +98,13 @@ final class StatusItemManager: NSObject {
 
     private func showContextMenu() {
         let menu = NSMenu()
-        menu.addItem(
-            NSMenuItem(
-                title: "Open History",
-                action: #selector(openHistory),
-                keyEquivalent: ""
-            )
+        let historyItem = NSMenuItem(
+            title: "Open History",
+            action: #selector(openHistory),
+            keyEquivalent: ""
         )
+        historyItem.image = NSImage(systemSymbolName: "clock.arrow.circlepath", accessibilityDescription: "History")
+        menu.addItem(historyItem)
         menu.addItem(
             NSMenuItem(
                 title: "Settings...",

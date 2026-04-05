@@ -103,6 +103,15 @@ struct SettingsView: View {
                     Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
                 }
             }
+
+            Section("Links") {
+                Link(destination: URL(string: "https://edufalcao.com")!) {
+                    Label("edufalcao.com", systemImage: "globe")
+                }
+                Link(destination: URL(string: "https://github.com/edufalcao/kopi-app")!) {
+                    Label("GitHub Repository", systemImage: "chevron.left.forwardslash.chevron.right")
+                }
+            }
         }
         .formStyle(.grouped)
         .padding()

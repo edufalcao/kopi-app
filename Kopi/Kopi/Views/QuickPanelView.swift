@@ -12,7 +12,7 @@ struct QuickPanelView: View {
 
     @State private var searchText = ""
     @State private var selectedFilter: ClipboardFilter = .all
-    @State private var selectedIndex: Int?
+    @State private var selection = QuickPanelSelection()
     @FocusState private var isListFocused: Bool
 
     private var filteredItems: [ClipboardItem] {
@@ -72,7 +72,7 @@ struct QuickPanelView: View {
                         LazyVStack(spacing: 2) {
                             ForEach(Array(filteredItems.enumerated()), id: \.element.id) { index, item in
                                 Button {
-                                    selectedIndex = index
+                                    selection.selectedIndex = index
                                     paste(item)
                                 } label: {
                                     ClipboardItemRow(item: item, imageStorage: imageStorage)
@@ -83,11 +83,16 @@ struct QuickPanelView: View {
                                 .padding(.vertical, 1)
                                 .background(
                                     RoundedRectangle(cornerRadius: 4)
-                                        .fill(selectedIndex == index
+                                        .fill(selection.selectedIndex == index
                                               ? Color.accentColor.opacity(0.2)
                                               : Color.clear)
                                 )
                                 .id(item.id)
+                                .onHover { isHovered in
+                                    if isHovered {
+                                        selection.hoverItem(at: index)
+                                    }
+                                }
                                 .contextMenu {
                                     Button("Paste") {
                                         paste(item)
@@ -104,7 +109,7 @@ struct QuickPanelView: View {
                         }
                         .padding(.vertical, 4)
                     }
-                    .onChange(of: selectedIndex) { _, newIndex in
+                    .onChange(of: selection.selectedIndex) { _, newIndex in
                         if let idx = newIndex, idx < filteredItems.count {
                             withAnimation {
                                 proxy.scrollTo(filteredItems[idx].id, anchor: .center)
@@ -167,28 +172,21 @@ struct QuickPanelView: View {
     }
 
     private func deleteSelectedItem() {
-        if let index = selectedIndex, index < filteredItems.count {
+        if let index = selection.selectedIndex, index < filteredItems.count {
             try? store.delete(filteredItems[index])
-            selectedIndex = nil
+            selection.selectedIndex = nil
         }
     }
 
     private func pasteSelectedItem() {
-        if let index = selectedIndex, index < filteredItems.count {
+        if let index = selection.selectedIndex, index < filteredItems.count {
             let item = filteredItems[index]
             paste(item)
         }
     }
 
     private func moveSelection(by offset: Int) {
-        let count = filteredItems.count
-        guard count > 0 else { return }
-
-        if let current = selectedIndex {
-            selectedIndex = max(0, min(count - 1, current + offset))
-        } else {
-            selectedIndex = offset > 0 ? 0 : count - 1
-        }
+        selection.moveSelection(by: offset, itemCount: filteredItems.count)
     }
 
     private func paste(_ item: ClipboardItem) {
