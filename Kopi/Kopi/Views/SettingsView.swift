@@ -4,6 +4,8 @@ import KeyboardShortcuts
 import LaunchAtLogin
 
 struct SettingsView: View {
+    private static let donateURL = URL(string: "https://buymeacoffee.com/wilii5u96y")!
+
     @AppStorage("purgeDays") private var purgeDays: Int = 30
     @Environment(\.modelContext) private var modelContext
     @State private var showClearConfirmation = false
@@ -24,18 +26,24 @@ struct SettingsView: View {
                 .tabItem {
                     Label("Storage", systemImage: "internaldrive")
                 }
+
+            aboutTab
+                .tabItem {
+                    Label("About", systemImage: "info.circle")
+                }
+
+            donateTab
+                .tabItem {
+                    Label("Donate", systemImage: "heart")
+                }
         }
-        .frame(width: 420, height: 260)
+        .frame(width: 500, height: 260)
     }
 
     private var generalTab: some View {
         Form {
-            LaunchAtLogin.Toggle("Launch at login")
-
-            Section("About") {
-                LabeledContent("Version") {
-                    Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
-                }
+            Section("Startup") {
+                LaunchAtLogin.Toggle("Launch at login")
             }
         }
         .formStyle(.grouped)
@@ -81,6 +89,30 @@ struct SettingsView: View {
                     Button("Cancel", role: .cancel) {}
                 } message: {
                     Text("This will delete all clipboard history including pinned items. This cannot be undone.")
+                }
+            }
+        }
+        .formStyle(.grouped)
+        .padding()
+    }
+
+    private var aboutTab: some View {
+        Form {
+            Section("Application") {
+                LabeledContent("Version") {
+                    Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
+                }
+            }
+        }
+        .formStyle(.grouped)
+        .padding()
+    }
+
+    private var donateTab: some View {
+        Form {
+            Section("Support Kopi") {
+                Link(destination: Self.donateURL) {
+                    Label("Buy Me a Coffee", systemImage: "cup.and.saucer.fill")
                 }
             }
         }
